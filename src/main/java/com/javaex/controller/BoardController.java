@@ -24,6 +24,11 @@ public class BoardController {
 		
 		List<BoardVo> getList = boardService.getList();
 		model.addAttribute("getList", getList);
+		System.out.println("게시글 완료");
+		
+		List<AnswerVo> getAlist = boardService.getAnswerList();
+		model.addAttribute("getAlist",getAlist);
+		System.out.println("댓글완료");
 		
 		return "/WEB-INF/views/test/bitBoard.jsp";
 		
@@ -60,9 +65,11 @@ public class BoardController {
 	}
 	
 	@RequestMapping(value = "/add_answer", method = RequestMethod.POST)
-	public String add_answer(@RequestParam("no")int no,@RequestParam("depth")int depth,@ModelAttribute AnswerVo answerVo) {
+	public String add_answer(@RequestParam("no")int no,@RequestParam("Bdepth")int Bdepth,@ModelAttribute AnswerVo answerVo) {
+		
 		System.out.println("add_answer");
-		boardService.add_answer(no,depth,answerVo);
+		
+		boardService.add_answer(no,Bdepth,answerVo);
 		
 		return "redirect:/board";
 	}

@@ -16,7 +16,7 @@
 		
 		<div id="content">
 			<div id="board">
-				<form class="board-form" method="get" action="/example/add_answer?no=${no}&depth=${depth}" enctype="multipart/form-data">
+				<form class="board-form" method="post" action="/example/add_answer?no=${no}&Bdepth=${depth}" enctype="multipart/form-data">
 					<table class="tbl-ex">
 						<tr>
 							<th colspan="2">글쓰기</th>
@@ -24,6 +24,10 @@
 						<tr>
 							<td class="label">제목</td>
 							<td><input type="text" name="title" value=""></td>
+						</tr>
+						<tr>
+							<td class="label">이름</td>
+							<td><input type="text" name="name" value=""></td>
 						</tr>
 						<tr>
 							<td class="label">내용</td>

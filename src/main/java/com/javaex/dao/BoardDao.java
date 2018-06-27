@@ -34,12 +34,14 @@ public class BoardDao {
 		return sqlSession.selectOne("board.getContent", no);
 	}
 	
-	public void add_answer(int no,int depth,AnswerVo answerVo) {
+	public void add_answer(AnswerVo answerVo) {
 		
-		Map<String,Object> bmap = new HashMap<String,Object>();
-		bmap.put("no", no);
-		bmap.put("depth", depth);
-		sqlSession.insert("board.add_answer",bmap);
+		sqlSession.insert("board.add_answer",answerVo);
+	}
+	
+	public List<AnswerVo> getAnswerList(){
+		
+		return sqlSession.selectList("board.getAlist");
 	}
 
 }

@@ -30,9 +30,16 @@ public class BoardService {
 		return boardDao.getContent(no);
 	}
 	
-	public void add_answer(int no,int depth,AnswerVo answerVo) {
+	public void add_answer(int no,int Bdepth,AnswerVo answerVo) {
 		
-		boardDao.add_answer(no,depth,answerVo);
+		answerVo.setGroup_no(no);
+		answerVo.setDepth(Bdepth);
+		boardDao.add_answer(answerVo);
+	}
+	
+	public List<AnswerVo> getAnswerList(){
+		
+		return boardDao.getAnswerList();
 	}
 
 }

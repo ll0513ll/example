@@ -1784,14 +1784,26 @@ $(".snb_1709 .newdepth4").on("mouseenter focusin", function(){
 										</tr>
 									</thead>
 								<c:forEach items="${requestScope.getList}" var="getList">
-								<tr>
-									<td>${getList.no}</td>
-									<td><a
-										href="/example/view?no=${getList.no}">${getList.title}</a></td>
-									<td>${getList.name}</td>
-									<td>${getList.reg_date}</td>
-							
-								</tr>
+									<tr>
+										<td>${getList.no}</td>
+										<td><a
+											href="/example/view?no=${getList.no}">${getList.title}</a></td>
+										<td>${getList.name}</td>
+										<td>${getList.reg_date}</td>
+								
+									</tr>
+									<c:if test = "${getList.no eq getAlist.group_no}">
+										<c:forEach  items ="${requestScope.getAlist}" var="getAlist">
+											<tr>
+												<td>${getAlist.title}</td>
+												<td><a
+													href="/example/Aview?group_no=${getAlist.group_no}">${getAlist.content}</a></td>
+												<td>${getAlist.name}</td>
+												<td>${getAlist.reg_date}</td>
+										
+											</tr>
+										</c:forEach>
+									</c:if> 
 								</c:forEach>
 								</table>
 							</div>
