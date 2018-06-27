@@ -62,9 +62,9 @@ public class BoardController {
 	@RequestMapping(value = "/add_answer", method = RequestMethod.POST)
 	public String add_answer(@RequestParam("no")int no,@RequestParam("depth")int depth,@ModelAttribute AnswerVo answerVo) {
 		System.out.println("add_answer");
-		boardService.add_answer(no,depth);
+		boardService.add_answer(no,depth,answerVo);
 		
-		return "";
+		return "redirect:/board";
 	}
 	
 	

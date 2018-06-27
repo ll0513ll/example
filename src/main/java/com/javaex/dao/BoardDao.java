@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.javaex.vo.AnswerVo;
 import com.javaex.vo.BoardVo;
 
 @Repository
@@ -33,7 +34,7 @@ public class BoardDao {
 		return sqlSession.selectOne("board.getContent", no);
 	}
 	
-	public void add_answer(int no,int depth) {
+	public void add_answer(int no,int depth,AnswerVo answerVo) {
 		
 		Map<String,Object> bmap = new HashMap<String,Object>();
 		bmap.put("no", no);

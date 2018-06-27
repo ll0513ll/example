@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.javaex.dao.BoardDao;
+import com.javaex.vo.AnswerVo;
 import com.javaex.vo.BoardVo;
 
 @Service
@@ -29,9 +30,9 @@ public class BoardService {
 		return boardDao.getContent(no);
 	}
 	
-	public void add_answer(int no,int depth) {
+	public void add_answer(int no,int depth,AnswerVo answerVo) {
 		
-		boardDao.add_answer(no,depth);
+		boardDao.add_answer(no,depth,answerVo);
 	}
 
 }
