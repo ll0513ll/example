@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+
+<insert id="content_insert" parameterType="com.javaex.vo.BoardVo">
+	
+	<![CDATA[
+		insert into board(title,name,content,depth)
+		values(						#{title},
+									#{name},
+									#{content},
+									0
+									)
+	]]>
+
+</insert>
+
+<select id="getList" resultType="com.javaex.vo.BoardVo">
+
+<![CDATA[
+		select * from board
+	]]>
+
+</select>
+
+<select id="getContent" parameterType="int" resultType="com.javaex.vo.BoardVo">
+
+<![CDATA[
+		select * from board where no=#{no}
+	]]>
+
+</select>
+
+<insert id="add_answer" parameterType="map">
+	
+	<![CDATA[
+		insert into answer(title,name,content,depth,group_no)
+		values(						#{title},
+									#{name},
+									#{content},
+									#{depth}+1,
+									#{no}
+									)
+	]]>
+
+</insert>
+
+
+</mapper>
