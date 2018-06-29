@@ -1774,6 +1774,7 @@ $(".snb_1709 .newdepth4").on("mouseenter focusin", function(){
 										<col style="width:58%">
 										<col style="width:15%">
 										<col style="width:15%">
+										<col style="width:20%">
 									</colgroup>
 									<thead>
 										<tr>
@@ -1781,6 +1782,7 @@ $(".snb_1709 .newdepth4").on("mouseenter focusin", function(){
 											<th scope="col" class="gradBg" style="text-align:center; font-size:10pt;">제목</th>
 											<th scope="col" class="gradBg" style="font-size:10pt;">작성자</th>
 											<th scope="col" class="gradBg" style="text-align:center; font-size:10pt;">작성일</th>
+											<th scope="col" class="gradBg" style="text-align:center; font-size:10pt;">삭제</th>
 										</tr>
 									</thead>
 								<c:forEach items="${requestScope.getList}" var="getList">
@@ -1792,18 +1794,24 @@ $(".snb_1709 .newdepth4").on("mouseenter focusin", function(){
 										<td>${getList.reg_date}</td>
 								
 									</tr>
-									<c:if test = "${getList.no eq getAlist.group_no}">
-										<c:forEach  items ="${requestScope.getAlist}" var="getAlist">
+									<c:forEach  items ="${requestScope.getAlist}" var="answerVo">
+										<c:if test = "${getList.no eq answerVo.group_no}">
 											<tr>
-												<td>${getAlist.title}</td>
-												<td><a
-													href="/example/Aview?group_no=${getAlist.group_no}">${getAlist.content}</a></td>
-												<td>${getAlist.name}</td>
-												<td>${getAlist.reg_date}</td>
-										
-											</tr>
-										</c:forEach>
-									</c:if> 
+											<td></td>
+											<td>
+											<c:forEach begin="1" end="${answerVo.depth}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</c:forEach>
+											<img src="/example/assets/images/reply.png">
+												<a
+													href="/example/Aview?a_no=${answerVo.a_no}">${answerVo.title}</a></td>
+												<td>${answerVo.name}</td>
+												<td>${answerVo.reg_date}</td>
+												<td>
+													<a href="/example/delete?a_no=${answerVo.a_no}">
+													<img src="/example/assets/images/delete.png"></a></td>
+											
+										</tr>
+										</c:if> 
+									</c:forEach>
 								</c:forEach>
 								</table>
 							</div>
@@ -1822,47 +1830,8 @@ $(".snb_1709 .newdepth4").on("mouseenter focusin", function(){
 			<!-- //Content_Wrap -->
 		</div>
 
-		<!-- Footer_Wrap -->
-		
-	<!-- footer -->
-		<div id="Footer_Outer_Wrap" style="border-bottom:1px solid #516077; margin-top:50px; min-width:960px;">
-			<div style="width:960px; margin:0 auto; ">
-				<div class="fl" style="font-size:13px; height:26px; padding-top:13px; padding-left:15px;"><b>
-					<a href="javascript:alert('준비중입니다. 문의(02-3486-3456).');" style="text-decoration:none; color:#a0a0a0; ">채용안내</a>
-					<span style="margin:0 5px 0 7px; color:#a0a0a0; ">|</span>
-					<a href="#" style="text-decoration:none; color:#a0a0a0; ">이메일 무단수집거부</a>
-					<span style="margin:0 5px 0 7px; color:#a0a0a0; ">|</span>
-					<a href="/Member/policy.asp" style="text-decoration:none; color:#a0a0a0; ">개인정보취급방침</a>
-					<span style="margin:0 5px 0 7px; color:#a0a0a0; ">|</span>
-					<a href="javascript:alert('준비중입니다. 문의(02-3486-3456)');" style="text-decoration:none; color:#a0a0a0; ">이용약관</a>
-				</b></div>
-				<div style="float:right; height:26px; ">
-					<a href="http://bitacademy.blog.me" target="_blank" style="margin-right:7px;"><img src="/Images/Btns/btn_footer_Blog.png"/></a>
-					<a href="https://www.facebook.com/Bitschool" target="_blank" style="margin-right:7px;"><img src="/Images/Btns/btn_footer_Facebook.png"/></a>
-					<a href="https://twitter.com/bit_academy" target="_blank" ><img src="/Images/Btns/btn_footer_Twitter.png"/></a>
-				</div>
-				<div style="clear:both;"></div>
-			</div>
-		</div>
-		<div id="Footer_Outer_Wrap" style="min-width:960px;">
-			<div style="width:960px; margin:0 auto; height:180px; overflow-y:hidden;">
-				<div class="fl" style="background-color:#122139; height:180px; padding-top:30px; padding-left:15px; font-size:13px; ">
-					<div>
-						<a href="#"><img src="/Images/Btns/btn_footer_LogoBitacademy.png"/></a>
-						<p style="color:#a0a0a0;"><b>서울특별시 서초구 서초대로74길33 비트빌 3층</b>  |  <b>사업자등록번호</b> 220-81-29726  | <b> 대표이사</b> 조현정  |  <b>법인명</b> (주)비트컴퓨터</p>
-						<p style="color:#a0a0a0;"><b>TEL</b> 02-3486-3456 | <b>FAX</b> 02-3486-7890 | <b>통신판매업 신고번호</b> 서울서초 2003-02577호</p>
-						<p style="color:#a0a0a0;">COPYRIGHT BY BITACADEMY CO.LTD. ALL RIGHTS RESERVED. HTTP://www.BITacademy.com</p>
-					</div>
-					
-				</div>
-				<div style="float:right;">
-					<img src="/Images/Btns/btn_footer_KakaoTalk.png"/>
-				</div>
-				<div style="clear:both;"></div>
-			</div>
-		</div>
-		</div>
-		<!-- //Footer_Wrap -->
+	<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>	
+	
 	</div>
 </body>
 </html>

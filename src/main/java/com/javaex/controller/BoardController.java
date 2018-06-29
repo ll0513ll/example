@@ -58,7 +58,6 @@ public class BoardController {
 	
 	@RequestMapping(value = "/reply", method = RequestMethod.GET)
 	public String reply(@RequestParam("no")int no,@RequestParam("depth")int depth,Model model) {
-		System.out.println("1");
 		model.addAttribute("no",no);
 		model.addAttribute("depth",depth);
 		return "/WEB-INF/views/board/replyform.jsp";
@@ -67,9 +66,34 @@ public class BoardController {
 	@RequestMapping(value = "/add_answer", method = RequestMethod.POST)
 	public String add_answer(@RequestParam("no")int no,@RequestParam("Bdepth")int Bdepth,@ModelAttribute AnswerVo answerVo) {
 		
-		System.out.println("add_answer");
+		System.out.println(answerVo.toString());
 		
 		boardService.add_answer(no,Bdepth,answerVo);
+		
+		return "redirect:/board";
+	}
+	
+	@RequestMapping(value = "/Aview", method = RequestMethod.GET)
+	public String Aview(@RequestParam("a_no")int a_no,Model model) {
+		
+		AnswerVo answerVo = boardService.getAcontent(a_no);
+		model.addAttribute("Acontent",answerVo);
+		
+		return "/WEB-INF/views/board/aview.jsp";
+	}
+	
+	@RequestMapping(value = "/add_AAnswer", method = RequestMethod.GET)
+	public String add_AAnswer(@ModelAttribute AnswerVo answerVo) {
+		
+		boardService.add_AAnswer(answerVo);
+		
+		return "redirect:/board";
+	}
+	
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String delete(@RequestParam("a_no")int a_no) {
+		
+		boardService.delete(a_no);
 		
 		return "redirect:/board";
 	}

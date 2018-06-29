@@ -43,16 +43,47 @@
 <insert id="add_answer" parameterType="com.javaex.vo.AnswerVo">
 	
 	<![CDATA[
-		insert into answer(title,name,content,depth,group_no)
+		insert into answer(title,name,content,group_no,depth)
 		values(						#{title},
 									#{name},
 									#{content},
-									#{depth}+1,
-									#{no}
+									#{group_no},
+									#{depth}+1
 									)
 	]]>
 
 </insert>
 
+<insert id="add_AAnswer" parameterType="com.javaex.vo.AnswerVo">
+	
+	<![CDATA[
+		insert into answer(title,name,content,group_no,depth)
+		values(						#{title},
+									#{name},
+									#{content},
+									#{group_no},
+									#{depth}+1
+									)
+	]]>
+
+</insert>
+
+<select id="getAcontent" parameterType="int" resultType="com.javaex.vo.AnswerVo">
+
+	<![CDATA[
+		select * from answer where a_no=#{a_no}
+	]]>
+
+</select>
+
+<delete id="delete" parameterType="int">
+
+	<![CDATA[
+			delete 
+			from answer
+			where a_no=#{a_no}
+		]]>
+	
+</delete>
 
 </mapper>

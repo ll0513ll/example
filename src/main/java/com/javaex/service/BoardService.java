@@ -34,12 +34,30 @@ public class BoardService {
 		
 		answerVo.setGroup_no(no);
 		answerVo.setDepth(Bdepth);
+		System.out.println(answerVo.toString());
 		boardDao.add_answer(answerVo);
+	}
+	
+	public void add_AAnswer(AnswerVo answerVo) {
+		
+		boardDao.add_AAnswer(answerVo);
 	}
 	
 	public List<AnswerVo> getAnswerList(){
 		
 		return boardDao.getAnswerList();
+	}
+	
+	public AnswerVo getAcontent(int a_no) {
+		
+		return boardDao.getAcontent(a_no);
+
+	}
+	
+	public void delete(int a_no) {
+		
+		boardDao.delete(a_no);
+		
 	}
 
 }

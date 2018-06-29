@@ -22,13 +22,13 @@
 					</tr>
 					<tr>
 						<td class="label">제목</td>
-						<td>${content.title}</td>
+						<td>${Acontent.title}</td>
 					</tr>
 					<tr>
 						<td class="label">내용</td>
 						<td>
 							<div class="view-content">
-								${content.content}
+								${Acontent.content}
 							</div>
 						</td>
 					</tr>
@@ -36,7 +36,7 @@
 				<div class="bottom">
 					<a href="/example/board">글목록</a>
 					<a href="">글수정</a>
-					<a href="/example/reply?no=${content.no}&depth=${content.depth}">댓글</a>
+					<a href="/example/reply?no=${Acontent.group_no}&depth=${Acontent.depth}">댓글</a>
 				</div>
 			</div>
 		</div>

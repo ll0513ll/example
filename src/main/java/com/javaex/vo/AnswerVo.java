@@ -2,25 +2,34 @@ package com.javaex.vo;
 
 public class AnswerVo {
 	
+	private int a_no;
 	private String title;
 	private String name;
 	private String content;
 	private String reg_date;
 	private int group_no;
-	private int order_no;
 	private int depth;
 	
-	public AnswerVo(String title, String name, String content, String reg_date, int group_no, int order_no, int depth) {
+	public AnswerVo(int a_no, String title, String name, String content, String reg_date, int group_no, int depth) {
+		this.a_no = a_no;
 		this.title = title;
 		this.name = name;
 		this.content = content;
 		this.reg_date = reg_date;
 		this.group_no = group_no;
-		this.order_no = order_no;
 		this.depth = depth;
 	}
 
 	public AnswerVo() {
+
+	}
+
+	public int getA_no() {
+		return a_no;
+	}
+
+	public void setA_no(int a_no) {
+		this.a_no = a_no;
 	}
 
 	public String getTitle() {
@@ -63,14 +72,6 @@ public class AnswerVo {
 		this.group_no = group_no;
 	}
 
-	public int getOrder_no() {
-		return order_no;
-	}
-
-	public void setOrder_no(int order_no) {
-		this.order_no = order_no;
-	}
-
 	public int getDepth() {
 		return depth;
 	}
@@ -81,10 +82,10 @@ public class AnswerVo {
 
 	@Override
 	public String toString() {
-		return "AnswerVo [title=" + title + ", name=" + name + ", content=" + content + ", reg_date=" + reg_date
-				+ ", group_no=" + group_no + ", order_no=" + order_no + ", depth=" + depth + "]";
+		return "AnswerVo [a_no=" + a_no + ", title=" + title + ", name=" + name + ", content=" + content + ", reg_date="
+				+ reg_date + ", group_no=" + group_no + ", depth=" + depth + "]";
 	}
 	
 	
-
+	
 }

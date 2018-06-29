@@ -16,7 +16,7 @@
 		
 		<div id="content">
 			<div id="board">
-				<form class="board-form" method="post" action="/example/add_answer?no=${no}&Bdepth=${depth}" enctype="multipart/form-data">
+				<form class="board-form" method="post" action="/example/add_answer?no=${no}&Bdepth=${depth}">
 					<table class="tbl-ex">
 						<tr>
 							<th colspan="2">글쓰기</th>
@@ -36,10 +36,10 @@
 							</td>
 						</tr>
 					</table>
-					<!-- group_no -->g<input type="text" name="groupNo" value="${replyboardVo.groupNo}"> <br/>
+					<%-- <!-- group_no -->g<input type="text" name="groupNo" value="${replyboardVo.groupNo}"> <br/>
 					<!-- order_no -->o<input type="text" name="orderNo" value="${replyboardVo.orderNo}"><br/>
 					<!-- parent_no no를 parent_no로-->p<input type="text" name="parentNo" value="${replyboardVo.no}"><br/>
-					<!-- depth -->d<input type="text" name="depth" value="${replyboardVo.depth}">
+					<!-- depth -->d<input type="text" name="depth" value="${replyboardVo.depth}"> --%>
 					<div class="bottom">
 						<a href="/example/board">취소</a>
 						<input type="submit" value="등록">
@@ -48,9 +48,7 @@
 			</div>
 		</div>
 
-		<div id="footer">
-			<p>(c)opyright 2015,2016,2017</p>
-		</div> 
+		<c:import url="/WEB-INF/views/includes/footer.jsp"></c:import>	
 		
 	</div><!-- /container -->
 </body>
